@@ -9,8 +9,9 @@ import java.awt.event.ActionListener;
 
 public class staticScreenSrc extends JPanel {
 	Timer timer;
-	int sandSize=1;//2 or 1 best
-	int greyness=50;//after 100, chooses value within 100 above 0 and below 255
+	int sandSize=1
+			;//2 or 1 best
+	int greyness=100;//after 100, chooses value within 100 above 0 and below 255
 	public void paintComponent(Graphics g) {
 		// Rectangle bounds=g.getClipBounds();
 		super.paintComponent(g);
@@ -23,7 +24,6 @@ public class staticScreenSrc extends JPanel {
 					col = 255 - col;
 				}
 				
-				
 				g.setColor(new Color(col, col, col));
 				g.fillRect(x, y, sandSize,sandSize);
 			}
@@ -31,14 +31,17 @@ public class staticScreenSrc extends JPanel {
 	}
 
 	public static void main(String[] args) {
-
+		final int screenWidth=500;
+		final int screenHeight=500;
+		
+		
 		final int INTERVAL = 17;//msec 17 for 60 fps
 
 		var panel = new staticScreenSrc();
 
 		// panel.setBackground(Color.GREEN.darker());
 		var frame = new JFrame("A simple graphics program");
-		frame.setSize(1000, 1000);
+		frame.setSize(screenWidth, screenHeight);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		frame.setVisible(true);

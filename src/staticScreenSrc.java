@@ -9,12 +9,8 @@ import java.awt.event.ActionListener;
 
 public class staticScreenSrc extends JPanel {
 	Timer timer;
-	
-	
-	int sandSize=2;//2 or 1 best
-	int greyness=50;//2 for black or white only, after 100, chooses value within 100 above 0 and below 255
-	
-	
+	static int sandSize=2;//2 or 1 best
+	int greyness=50;//after 100, chooses value within 100 above 0 and below 255
 	public void paintComponent(Graphics g) {
 		// Rectangle bounds=g.getClipBounds();
 		super.paintComponent(g);
@@ -42,15 +38,22 @@ public class staticScreenSrc extends JPanel {
 
 	public static void main(String[] args) {
 		
-		final int screenWidth=500;
-		final int screenHeight=500;	
-		final int INTERVAL = 17;//miniumm is 17 mmsec for 60 fps
+		 int INTERVAL = 17;//msec 17 for 60 fps
 
 		var panel = new staticScreenSrc();
-
+		
+		Scanner kb=new Scanner (System.in);
+		System.out.println("grain size? (pixels)");
+		sandSize=kb.nextInt();
+		System.out.println("frame rate? (fps)");
+		INTERVAL =(int) Math.round(1000/kb.nextDouble());
+		System.out.println("frame rate: "+INTERVAL+" msec between frames");
+		
+		
+		
 		// panel.setBackground(Color.GREEN.darker());
-		var frame = new JFrame("A simple graphics program");
-		frame.setSize(screenWidth, screenHeight);
+		var frame = new JFrame("custom static screen");
+		frame.setSize(1000, 1000);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		frame.setVisible(true);

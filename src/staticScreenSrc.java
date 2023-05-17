@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 public class staticScreenSrc extends JPanel {
 	Timer timer;
 	static int sandSize=2;//2 or 1 best
+	static int darkColor;
+	static int lightColor;
 	int greyness=50;//after 100, chooses value within 100 above 0 and below 255
 	public void paintComponent(Graphics g) {
 		// Rectangle bounds=g.getClipBounds();
@@ -25,9 +27,9 @@ public class staticScreenSrc extends JPanel {
 				}*/
 				int col;
 				if (Math.random() > 0.5) {//white chosen
-					col = 205;
+					col = lightColor;
 				}else {//black chosen
-					col=50;
+					col=darkColor;
 				}
 				
 				g.setColor(new Color(col, col, col));
@@ -48,6 +50,10 @@ public class staticScreenSrc extends JPanel {
 		System.out.println("frame rate? (fps)");
 		INTERVAL =(int) Math.round(1000/kb.nextDouble());
 		System.out.println("frame rate: "+INTERVAL+" msec between frames");
+		System.out.println("dark square light value? (0-255)");
+		darkColor=kb.nextInt();
+		System.out.println("light square light value? (0-255)");
+		lightColor=kb.nextInt();
 		
 		
 		

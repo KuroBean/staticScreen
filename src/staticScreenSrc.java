@@ -76,3 +76,8 @@ public class staticScreenSrc extends JPanel {
 	}
 
 }
+//original effects: 2 or 3, 60, 0,255
+//for shadow only: 1, 30, 0, 255
+//good shadow effect with line drwawing: 6,60,140,180
+
+
